@@ -120,7 +120,7 @@ async function scrape(task, page){
     try{
         /* navigate to url and wait for document to load */
         try{
-            await page.goto(url/* , {waitUntil : 'networkidle2'} */)
+            await page.goto(url, {waitUntil : 'domcontentloaded'})
 
         }catch(err){
             console.log(`Error : ${err}`);
