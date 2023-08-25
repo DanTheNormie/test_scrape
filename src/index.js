@@ -125,6 +125,44 @@ app.get('/data',async (req,res,next)=>{
 
 })
 
+app.get('/data2', async (req,res)=>{
+    const {cluster} = req.puppeteer
+    const {keyword} = req.query
+    const search_task = domains.find((e)=>e['domain_name']==="Pirate-Bay").urls.find((e)=>e['name']==="Search").task
+
+    search_task.params['search_text'].value = keyword
+
+    try{
+        return await cluster.execute(search_task, async ({page,data})=>{
+            const torrents_data_array = await taskRunner(page, data)
+            console.log(torrents_data_array);
+
+            if(torrents_data_array[0].title === 'No results returned'){
+                return res.status(404).json({
+                    success:false,
+                    message:"No Data found for given Keyword"
+                })
+            }
+        
+            return res.json({
+                success:true,
+                data:torrents_data_array,
+                message:'Data Fetched Successfully'
+            })
+
+        })
+        
+    }catch(err){
+        return res.json({
+            success:false,
+            message:"Request Failed (or) No data for given keyword",
+            error:err.message
+        })
+    }
+})
+
+
+
 
 
 app.listen(PORT, async () => {

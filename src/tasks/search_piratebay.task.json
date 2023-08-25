@@ -1,0 +1,77 @@
+{
+    "url":"{{base_url}}/search.php?q={{search_text}}",
+    "params":{
+        "base_url":{
+            "value":"https://tpb26.ukpass.co",
+            "required":true
+        },
+        "search_text":{
+            "default":"spidermanssxxxs",
+            "required":true
+        }
+    },
+    "selectors":[
+        {
+            "name":"title",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-name.item-title a"
+        },
+        {
+            "name":"uploaded_on",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-uploaded label"
+        },
+        {
+            "name":"magnet_link",
+            "format":"array",
+            "target":"href",
+            "selector":".list-entry .item-icons a"
+        },
+        {
+            "name":"size",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-size"
+        },
+        {
+            "name":"seeders",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-seed"
+        },
+        {
+            "name":"leechers",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-leech"
+        },
+        {
+            "name":"uploaded_by",
+            "format":"array",
+            "target":"innerText",
+            "selector":".list-entry .list-item.item-user a"
+        },
+        {
+            "name":"torrent_details_page_link",
+            "format":"array",
+            "target":"href",
+            "selector":".list-entry > .list-item.item-title > a"
+        }
+    ],
+    "result":{
+        "format":"array",
+        "parentElementSelector":".list-entry",
+        "data":[
+            "title",
+            "seeders",
+            "leechers",
+            "size",
+            "uploaded_by",
+            "uploaded_on",
+            "magnet_link",
+            "torrent_details_page_link"
+        ]
+    }
+}
