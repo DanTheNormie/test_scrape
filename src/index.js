@@ -21,7 +21,7 @@ let cluster;
         concurrency: Cluster.CONCURRENCY_PAGE,
         maxConcurrency: 3,
         puppeteerOptions: {
-            headless: false
+            headless: 'new'
         },
         puppeteer:puppeteer,
         timeout:60000,
