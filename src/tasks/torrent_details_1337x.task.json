@@ -1,0 +1,21 @@
+{
+    "url":"{{torent_details_url}}",
+    "params":{
+        "torent_details_url":{
+            "default":"https://1337x.unblockit.rsvp/torrent/3911065/Avengers-Endgame-2019-WEBRip-1080p-YTS-YIFY/",
+            "required":true
+        }
+    },
+    "selectors":[
+        {
+            "name":"magnet_link",
+            "format":"single",
+            "target":"href",
+            "selector":".dropdown-menu li:last-child > a"
+        }
+    ],
+    "result":{
+        "format":"single",
+        "data":["magnet_link"]
+    }
+}
