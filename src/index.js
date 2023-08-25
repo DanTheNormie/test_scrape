@@ -79,7 +79,6 @@ async function fetchMagnetLinksFrom1337x(torrents_data_array, details_task, clus
     return await Promise.allSettled(fetchMagnetLinkPromises);
 }
 
-app.use(require('express-status-monitor')());
 
 /* Traffic Signal */
 app.get('/data',async (req,res,next)=>{
