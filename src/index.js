@@ -19,7 +19,7 @@ let cluster;
 
     cluster = await Cluster.launch({
         concurrency: Cluster.CONCURRENCY_PAGE,
-        maxConcurrency: 3,
+        maxConcurrency: 2,
         puppeteerOptions: {
             headless: 'new'
         },
