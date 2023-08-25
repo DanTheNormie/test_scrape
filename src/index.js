@@ -23,6 +23,7 @@ let cluster;
         puppeteerOptions: {
             headless: 'new'
         },
+        puppeteer:puppeteer,
         timeout:60000,
     })
     cluster.on('taskerror', (err, data, willRetry) => {
